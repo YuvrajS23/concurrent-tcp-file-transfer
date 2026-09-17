@@ -13,16 +13,6 @@ A C++17, TCP-based file-transfer service with a polling event loop on the server
 - A request/response protocol with explicit sizes and error responses.
 - A storage-root boundary and flat, validated remote file names to reject path traversal.
 
-## Résumé alignment
-
-| Résumé point | Evidence in this repository |
-| --- | --- |
-| C++ / TCP sockets | The client and server use POSIX TCP sockets and compile as C++17. |
-| Reliable large-file uploads and downloads | Transfers are streamed in bounded chunks with declared 64-bit byte counts and byte-count acknowledgements. |
-| Polling-based I/O multiplexing | `src/server.cpp` uses `poll(2)`, non-blocking listener/client sockets, and per-client states. |
-| Simultaneous client connections | The integration test launches parallel uploads and runs an upload while a deliberately slow download is in progress. |
-| Each client can upload or download | `tcp_file_client put` and `tcp_file_client get` are both supported. One command uses one TCP connection. |
-
 The original coursework snapshots are retained under [`legacy/`](legacy/README.md). The runnable implementation is the rewritten code in [`src/`](src/), not the legacy prototypes.
 
 ## Architecture
