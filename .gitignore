@@ -1,0 +1,12 @@
+# Build products
+/build/
+/cmake-build-*/
+
+# Test and runtime data
+*.part
+*.upload-*.part
+server-root/
+client-data/
+
+# macOS metadata
+.DS_Store
